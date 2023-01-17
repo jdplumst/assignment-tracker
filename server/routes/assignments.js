@@ -11,7 +11,7 @@ router.get('/:id', (req, res) => {
     res.json({ msg: 'GET a single assignment' });
 });
 
-// POST a new assignment
+// CREATE a new assignment
 router.post('/', (req, res) => {
     res.json({ msg: 'POST a new assignment' });
 });
