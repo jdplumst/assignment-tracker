@@ -1,36 +1,26 @@
 const express = require('express');
 const router = express.Router();
-const Assignment = require('../models/assignment');
+const { 
+    getAssignments,
+    getAssignment,
+    createAssignment,
+    deleteAssignment,
+    updateAssignment
+} = require('../controllers/assignmentController');
 
 // GET all assignments
-router.get('/', (req, res) => {
-    res.json({ msg: 'GET all assignments' });
-});
+router.get('/', getAssignments);
 
 // GET a single assignment
-router.get('/:id', (req, res) => {
-    res.json({ msg: 'GET a single assignment' });
-});
+router.get('/:id', getAssignment);
 
 // CREATE a new assignment
-router.post('/', async (req, res) => {
-    const { title, course, due_date } = req.body
-    try {
-        const assignment = await Assignment.create({ title, course, due_date });
-        res.status(200).json(assignment);
-    } catch (err) {
-        res.status(400).json({ error:  err.message });
-    }
-});
+router.post('/', createAssignment);
 
 // DELETE an assignment
-router.delete('/:id', (req, res) => {
-    res.json({ msg: 'DELETE an assignment '});
-});
+router.delete('/:id', deleteAssignment);
 
 // UPDATE an assignment
-router.patch('/:id', (req, res) => {
-    res.json({ msg: 'UPDATE an assignment '});
-});
+router.patch('/:id', updateAssignment);
 
 module.exports = router;
