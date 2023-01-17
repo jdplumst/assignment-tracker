@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const Assignment = require('../models/assignment');
 
 // GET all assignments
 router.get('/', (req, res) => {
@@ -12,8 +13,14 @@ router.get('/:id', (req, res) => {
 });
 
 // CREATE a new assignment
-router.post('/', (req, res) => {
-    res.json({ msg: 'POST a new assignment' });
+router.post('/', async (req, res) => {
+    const { title, course, due_date } = req.body
+    try {
+        const assignment = await Assignment.create({ title, course, due_date });
+        res.status(200).json(assignment);
+    } catch (err) {
+        res.status(400).json({ error:  err.message });
+    }
 });
 
 // DELETE an assignment
