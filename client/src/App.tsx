@@ -1,6 +1,13 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import './styles/styles';
+
 const App = () => {
   return (
-    <div></div>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' />
+      </Routes>
+    </BrowserRouter>
   );
 };
 
