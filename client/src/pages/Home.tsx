@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 type Assignment = {
     _id: String,
@@ -27,7 +28,7 @@ const Home = () => {
     return (
         <div>
             {assignments.map((assignment) => (
-                <p key={0}>${assignment.title}</p>
+                <p key={uuidv4()}>{assignment.title}</p>
             ))}
         </div>
     );
