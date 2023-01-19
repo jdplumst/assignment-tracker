@@ -17,7 +17,7 @@ const Home = () => {
     }, []);
 
     return (
-        <div className='grid grid-cols-4 gap-x-24 bg-slate-100 min-h-screen'>
+        <div className='grid grid-cols-4 gap-x-24 bg-slate-100 pt-10 min-h-screen'>
             {assignments.map((assignment) => (
                 <AssignmentDetails key={uuidv4()} assignment={assignment} />
                 // <p key={uuidv4()}>{assignment.title}</p>
