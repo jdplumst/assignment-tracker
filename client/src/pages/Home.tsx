@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import AssignmentDetails, { Assignment } from '../components/AssignmentDetails';
+import AssignmentForm from '../components/AssignmentForm';
 
 const Home = () => {
     const [assignments, setAssignments] = useState<Assignment[]>([]);
@@ -17,11 +18,13 @@ const Home = () => {
     }, []);
 
     return (
-        <div className='grid grid-cols-4 gap-x-24 bg-slate-100 pt-10 min-h-screen'>
-            {assignments.map((assignment) => (
-                <AssignmentDetails key={uuidv4()} assignment={assignment} />
-                // <p key={uuidv4()}>{assignment.title}</p>
-            ))}
+        <div className='grid grid-cols-3 gap-x-24 bg-slate-100 pt-10 min-h-screen'>
+            <div className='col-span-2'>
+                {assignments.map((assignment) => (
+                    <AssignmentDetails key={uuidv4()} assignment={assignment} />
+                ))}
+            </div>
+            <AssignmentForm />
         </div>
     );
 };

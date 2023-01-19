@@ -22,7 +22,7 @@ const AssignmentDetails = ({ assignment }: AssignmentDetailsProps ) => {
     const formattedDueDate = dueDateMonth + ' ' + dueDateDay + ', ' + dueDateYear; 
     
     return (
-        <div className='col-span-3 border-solid border-4 border-slate-500 rounded-lg bg-white mx-20 mb-10 px-14 py-10 h-fit'>
+        <div className='border-solid border-4 border-slate-500 rounded-lg bg-white mx-20 mb-10 px-14 py-10 h-fit'>
             <h3 className="text-xl mb-10"><strong>{ assignment.title }</strong></h3>
             <p><strong>Course:</strong> { assignment.course }</p>
             <p><strong>Due Date:</strong> { formattedDueDate }</p>
