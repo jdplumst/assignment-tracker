@@ -39,7 +39,7 @@ export const assignmentsReducer = (state: AssignmentsStateType, action: ActionTy
             };
         case ActionOptions.CREATE_ASSIGNMENT:
             return {
-                assignments: [action.payload, ...state.assignments]
+                assignments: [action.payload, ...state.assignments].sort((a,b) => +new Date(a.dueDate) - +new Date(b.dueDate))
             };
         default:
             return state;
