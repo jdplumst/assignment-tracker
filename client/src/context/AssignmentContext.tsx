@@ -16,7 +16,8 @@ type AssignmentsContextProviderProps = {
 
 export const enum ActionOptions {
     SET_ASSIGNMENTS,
-    CREATE_ASSIGNMENT
+    CREATE_ASSIGNMENT,
+    DELETE_ASSIGNMENT
 }
 
 export type ActionType = {
@@ -41,6 +42,10 @@ export const assignmentsReducer = (state: AssignmentsStateType, action: ActionTy
             return {
                 assignments: [action.payload, ...state.assignments].sort((a,b) => +new Date(a.dueDate) - +new Date(b.dueDate))
             };
+        case ActionOptions.DELETE_ASSIGNMENT:
+            return {
+                assignments: state.assignments.filter((a) => a._id !== action.payload._id)
+            }
         default:
             return state;
     }
