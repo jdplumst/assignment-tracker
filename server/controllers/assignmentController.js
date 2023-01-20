@@ -23,6 +23,13 @@ const getAssignment = async (req, res) => {
 // Create new assignment
 const createAssignment = async (req, res) => {
     const { title, course, dueDate } = req.body;
+    let emptyFields = [];
+    if (!title) emptyFields.push('title');
+    if (!course) emptyFields.push('course');
+    if (!dueDate) emptyFields.push('dueDate');
+    if (emptyFields.length > 0) {
+        return res.status(400).json({ error: 'Please fill in all the fields', emptyFields });
+    }
     try {
         const assignment = await Assignment.create({ title, course, dueDate });
         res.status(200).json(assignment);
