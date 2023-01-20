@@ -1,12 +1,4 @@
-export type Assignment = {
-    _id: String,
-    title: String,
-    course: String,
-    dueDate: Date,
-    createdAt: Date,
-    updatedAt: Date,
-    __v: number
-}
+import { Assignment } from "../context/AssignmentContext";
 
 type AssignmentDetailsProps = {
     assignment: Assignment

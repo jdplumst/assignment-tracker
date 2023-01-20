@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import { useAssignmentsContext } from "../hooks/useAssignmentsContext";
+import { ActionOptions } from "../context/AssignmentContext";
 
 const AssignmentForm = () => {
+    const { dispatch } = useAssignmentsContext();
      const [title, setTitle] = useState('');
      const [course, setCourse] = useState('');
      const [dueDate, setDueDate] = useState('');
@@ -24,6 +27,7 @@ const AssignmentForm = () => {
             setTitle('');
             setCourse('');
             setDueDate('');
+            dispatch({ type: ActionOptions.CREATE_ASSIGNMENT, payload: data })
         }
     };
 
