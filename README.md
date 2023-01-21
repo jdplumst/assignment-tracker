@@ -45,7 +45,7 @@ PORT=[insert PORT number here (e.g. 4000)]
 MONGO_URI=[insert MONGO URI here]
 ```
 
-6. Run project
+6. Run project and run in two separate terminals:
 
 ```
 cd server
