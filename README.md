@@ -43,3 +43,15 @@ touch .env
 ```
 PORT=[insert PORT number here (e.g. 4000)]
 MONGO_URI=[insert MONGO URI here]
+```
+
+6. Run project
+
+```
+cd server
+npm run dev
+```
+```
+cd client
+npm start
+```
