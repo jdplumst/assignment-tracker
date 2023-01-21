@@ -2,6 +2,8 @@
 
 An Assignment Tracker app that allows users to record school assignments for their classes and their due dates.
 
+![image](https://user-images.githubusercontent.com/30222503/213830140-f442ab4e-1bcd-4082-829d-fc9397cf0ec4.png)
+
 ## Built With
 
 * Mongoose
