@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const Assignment = require("../models/assignment");
+const Assignment = require("../models/assignmentModel");
 
 // Get all assignments
 const getAssignments = async (req, res) => {
