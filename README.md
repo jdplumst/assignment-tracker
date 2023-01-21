@@ -19,41 +19,42 @@ Instructions on setting this project up locally and running it.
 
 2. Clone the repo
 
-```
-git clone https://github.com/jdplumst/assignment-tracker.git
-```
+    ```
+    git clone https://github.com/jdplumst/assignment-tracker.git
+    ```
 
 3. Install NPM packages
-```
-cd server
-npm install
-```
-```
-cd client
-npm install
-```
+
+    ```
+    cd server
+    npm install
+    ```
+    ```
+    cd client
+    npm install
+    ```
 
 4. Create .env file
 
-```
-cd server
-touch .env
-```
+    ```
+    cd server
+    touch .env
+    ```
 
 5. Add Mongo URI and Port number to .env file
 
-```
-PORT=[insert PORT number here (e.g. 4000)]
-MONGO_URI=[insert MONGO URI here]
-```
+    ```
+    PORT=[insert PORT number here (e.g. 4000)]
+    MONGO_URI=[insert MONGO URI here]
+    ```
 
 6. Run project and run in two separate terminals:
 
-```
-cd server
-npm run dev
-```
-```
-cd client
-npm start
-```
+    ```
+    cd server
+    npm run dev
+    ```
+    ```
+    cd client
+    npm start
+    ```
