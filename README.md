@@ -34,6 +34,7 @@ npm install
 4. Create .env file
 
 ```
+cd server
 touch .env
 ```
 
