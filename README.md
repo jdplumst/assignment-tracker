@@ -13,7 +13,7 @@ An Assignment Tracker app that allows users to record school assignments for the
 
 Instructions on setting this project up locally and running it.
 
-1. Get a MONGO URI from https://cloud.mongodb.com
+1. Get a Mongo URI from https://cloud.mongodb.com
 
 2. Clone the repo
 
@@ -37,7 +37,7 @@ npm install
 touch .env
 ```
 
-5. Add MONGO URI and Port number to .env file
+5. Add Mongo URI and Port number to .env file
 
 ```
 PORT=[insert PORT number here (e.g. 4000)]
