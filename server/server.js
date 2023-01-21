@@ -15,7 +15,8 @@ mongoose
     console.log(error);
   });
 
-const assignmentsRouter = require("./routes/assignments");
+const assignmentsRoutes = require("./routes/assignments");
+const userRoutes = require("./routes/user");
 
 const app = express();
 
@@ -26,4 +27,5 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/api/assignments", assignmentsRouter);
+app.use("/api/assignments", assignmentsRoutes);
+app.use("/api/user", userRoutes);
