@@ -10,6 +10,8 @@ An Assignment Tracker app that allows users to record school assignments for the
 * Express
 * Node.js
 * React
+* TypeScript (Frontend)
+* JavaScript (Backend)
 
 ## Getting Started
 
