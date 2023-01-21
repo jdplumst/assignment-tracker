@@ -9,7 +9,7 @@ An Assignment Tracker app that allows users to record school assignments for the
 * Node.js
 * React
 
-# Getting Started
+## Getting Started
 
 Instructions on setting this project up locally and running it.
 
@@ -37,7 +37,8 @@ npm install
 touch .env
 ```
 
-5. Add MONGO URI to .env file
+5. Add MONGO URI and Port number to .env file
 
 ```
+PORT=[insert PORT number here (e.g. 4000)]
 MONGO_URI=[insert MONGO URI here]
