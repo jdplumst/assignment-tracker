@@ -54,7 +54,7 @@ Instructions on setting this project up locally and running it.
 
     ```
     cd server
-    npm run dev
+    node server.js
     ```
     ```
     cd client
