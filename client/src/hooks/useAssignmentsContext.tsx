@@ -6,7 +6,7 @@ export const useAssignmentsContext = () => {
 
   if (!context) {
     throw Error(
-      "useAssignmentsContext must be used inside a AssignmentsContextProvider"
+      "useAssignmentsContext must be used inside an AssignmentsContextProvider"
     );
   }
 
