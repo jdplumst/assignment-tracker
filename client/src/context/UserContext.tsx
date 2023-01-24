@@ -1,4 +1,4 @@
-import { createContext, useReducer } from "react";
+import { createContext, useReducer, useEffect } from "react";
 
 type User = {
   _id: String;
@@ -10,7 +10,7 @@ type User = {
 };
 
 type UserStateType = {
-  user: User[];
+  user: User;
 };
 
 export const enum ActionOptions {
@@ -30,7 +30,7 @@ type UserContextProviderProps = {
 export const UserContext = createContext<{
   userState: UserStateType;
   dispatch: React.Dispatch<ActionType>;
-}>({ userState: { user: [] }, dispatch: () => null });
+}>({ userState: { user: {} as User }, dispatch: () => null });
 
 export const userReducer = (state: UserStateType, action: ActionType) => {
   switch (action.type) {
@@ -45,6 +45,12 @@ export const userReducer = (state: UserStateType, action: ActionType) => {
 
 export const UserContextProvider = ({ children }: UserContextProviderProps) => {
   const [userState, dispatch] = useReducer(userReducer, { user: null });
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user") || "null");
+    if (user !== "null") {
+      dispatch({ type: ActionOptions.LOGIN, payload: user });
+    }
+  }, []);
   console.log("UserContext state:", userState);
   return (
     <UserContext.Provider value={{ userState, dispatch }}>

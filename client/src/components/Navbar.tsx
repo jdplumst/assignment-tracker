@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import { useLogout } from "../hooks/useLogout";
+import { useUserContext } from "../hooks/useUserContext";
 
 const Navbar = () => {
   const { logout } = useLogout();
+  const { userState } = useUserContext();
 
   const handleLogout = () => {
     logout();
@@ -13,15 +15,19 @@ const Navbar = () => {
       <Link to="/">
         <h1 className="text-4xl">Assignment Tracker</h1>
       </Link>
-      <div className="">
-        <button onClick={handleLogout}>Logout</button>
-      </div>
-      <div className="flex">
-        <Link to="/login" className="pr-5">
-          Login
-        </Link>
-        <Link to="/signup">Signup</Link>
-      </div>
+      {userState.user ? (
+        <div className="flex">
+          <span className="pr-5">{userState.user.email}</span>
+          <button onClick={handleLogout}>Logout</button>
+        </div>
+      ) : (
+        <div className="flex">
+          <Link to="/login" className="pr-5">
+            Login
+          </Link>
+          <Link to="/signup">Signup</Link>
+        </div>
+      )}
     </nav>
   );
 };
