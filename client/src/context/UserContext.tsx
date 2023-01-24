@@ -13,7 +13,7 @@ type UserStateType = {
   user: User[];
 };
 
-const enum ActionOptions {
+export const enum ActionOptions {
   LOGIN,
   LOGOUT
 }
