@@ -8,7 +8,6 @@ const Signup = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(email, password);
     await signup(email, password);
   };
 

@@ -16,9 +16,7 @@ const Home = () => {
         return;
       }
       const response = await fetch("/api/assignments", {
-        headers: {
-          Authorization: `Bearer ${userState.user.token}`
-        }
+        headers: { Authorization: `Bearer ${userState.user.token}` }
       });
       const data = await response.json();
       if (response.ok) {
