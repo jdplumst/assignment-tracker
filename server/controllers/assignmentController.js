@@ -3,7 +3,8 @@ const Assignment = require("../models/assignmentModel");
 
 // Get all assignments
 const getAssignments = async (req, res) => {
-  const assignments = await Assignment.find({}).sort({ dueDate: 1 });
+  const user_id = req.user._id;
+  const assignments = await Assignment.find({ user_id }).sort({ dueDate: 1 });
   res.status(200).json(assignments);
 };
 
@@ -33,7 +34,13 @@ const createAssignment = async (req, res) => {
       .json({ error: "Please fill in all the fields", emptyFields });
   }
   try {
-    const assignment = await Assignment.create({ title, course, dueDate });
+    const user_id = req.user._id;
+    const assignment = await Assignment.create({
+      title,
+      course,
+      dueDate,
+      user_id
+    });
     res.status(200).json(assignment);
   } catch (err) {
     res.status(400).json({ error: err.message });

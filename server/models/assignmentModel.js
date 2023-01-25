@@ -6,7 +6,8 @@ const AssignmentSchema = new Schema(
   {
     title: { type: String, required: true },
     course: { type: String, required: true },
-    dueDate: { type: Date, required: true }
+    dueDate: { type: Date, required: true },
+    user_id: { type: String, required: true }
   },
   { timestamps: true }
 );
