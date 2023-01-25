@@ -4,20 +4,32 @@ import AssignmentDetails from "../components/AssignmentDetails";
 import AssignmentForm from "../components/AssignmentForm";
 import { ActionOptions } from "../context/AssignmentContext";
 import { useAssignmentsContext } from "../hooks/useAssignmentsContext";
+import { useUserContext } from "../hooks/useUserContext";
 
 const Home = () => {
   const { assignmentsState, dispatch } = useAssignmentsContext();
+  const { userState } = useUserContext();
 
   useEffect(() => {
     const fetchAssignments = async () => {
-      const response = await fetch("/api/assignments");
+      if (!userState.user) {
+        return;
+      }
+      const response = await fetch("/api/assignments", {
+        headers: {
+          Authorization: `Bearer ${userState.user.token}`
+        }
+      });
       const data = await response.json();
       if (response.ok) {
         dispatch({ type: ActionOptions.SET_ASSIGNMENTS, payload: data });
       }
     };
-    fetchAssignments();
-  }, []);
+
+    if (userState) {
+      fetchAssignments();
+    }
+  }, [dispatch, userState]);
 
   return (
     <div className="grid grid-cols-3 gap-x-24 bg-slate-100 pt-10 min-h-screen">

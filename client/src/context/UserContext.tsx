@@ -1,12 +1,8 @@
 import { createContext, useReducer, useEffect } from "react";
 
 type User = {
-  _id: String;
   email: String;
-  password: String;
-  createdAt: Date;
-  updatedAt: Date;
-  __v: number;
+  token: String;
 };
 
 type UserStateType = {

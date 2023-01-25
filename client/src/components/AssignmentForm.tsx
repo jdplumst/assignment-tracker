@@ -1,23 +1,30 @@
 import React, { useState } from "react";
 import { useAssignmentsContext } from "../hooks/useAssignmentsContext";
 import { ActionOptions } from "../context/AssignmentContext";
+import { useUserContext } from "../hooks/useUserContext";
 
 const AssignmentForm = () => {
   const { dispatch } = useAssignmentsContext();
+  const { userState } = useUserContext();
   const [title, setTitle] = useState("");
   const [course, setCourse] = useState("");
   const [dueDate, setDueDate] = useState("");
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<String | null>(null);
   const [emptyFields, setEmptyFields] = useState<String[]>([]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!userState.user) {
+      setError("You must be logged in");
+      return;
+    }
     const assignment = { title, course, dueDate };
     const response = await fetch("/api/assignments", {
       method: "POST",
       body: JSON.stringify(assignment),
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userState.user.token}`
       }
     });
     const data = await response.json();

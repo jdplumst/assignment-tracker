@@ -1,5 +1,6 @@
 import { Assignment, ActionOptions } from "../context/AssignmentContext";
 import { useAssignmentsContext } from "../hooks/useAssignmentsContext";
+import { useUserContext } from "../hooks/useUserContext";
 
 type AssignmentDetailsProps = {
   assignment: Assignment;
@@ -7,6 +8,7 @@ type AssignmentDetailsProps = {
 
 const AssignmentDetails = ({ assignment }: AssignmentDetailsProps) => {
   const { dispatch } = useAssignmentsContext();
+  const { userState } = useUserContext();
 
   // Create format for due date
   const dueDate = new Date(assignment.dueDate);
@@ -30,8 +32,14 @@ const AssignmentDetails = ({ assignment }: AssignmentDetailsProps) => {
   const formattedDueDate = dueDateMonth + " " + dueDateDay + ", " + dueDateYear;
 
   const handleClick = async () => {
+    if (!userState.user) {
+      return;
+    }
     const response = await fetch(`/api/assignments/${assignment._id}`, {
-      method: "DELETE"
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${userState.user.token}`
+      }
     });
     const data = await response.json();
     if (response.ok) {
