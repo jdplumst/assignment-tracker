@@ -2,7 +2,11 @@
 
 An Assignment Tracker app that allows users to record school assignments for their classes and their due dates.
 
-![image](https://user-images.githubusercontent.com/30222503/213830140-f442ab4e-1bcd-4082-829d-fc9397cf0ec4.png)
+![image](https://user-images.githubusercontent.com/30222503/214496117-3f864aa1-591e-4ac6-9ec9-ae424a121e24.png)
+
+![image](https://user-images.githubusercontent.com/30222503/214495930-1c170046-5d6a-483c-987b-817cebc15029.png)
+
+![image](https://user-images.githubusercontent.com/30222503/214495985-50a5a7c4-40a3-45e2-b3b6-b29524d4cd66.png)
 
 ## Built With
 
@@ -12,6 +16,7 @@ An Assignment Tracker app that allows users to record school assignments for the
 * React
 * TypeScript (Frontend)
 * JavaScript (Backend)
+* TailwindCSS
 
 ## Getting Started
 
@@ -43,11 +48,12 @@ Instructions on setting this project up locally and running it.
     touch .env
     ```
 
-5. Add Mongo URI and Port number to .env file
+5. Add Mongo URI, Port number 4000, and JWT Secret key to .env file
 
     ```
-    PORT=[insert PORT number here (e.g. 4000)]
+    PORT=[4000]
     MONGO_URI=[insert MONGO URI here]
+    SECRET=[insert JWT Secret key here] (e.g. SECRET=secret)
     ```
 
 6. Run project and run in two separate terminals:
