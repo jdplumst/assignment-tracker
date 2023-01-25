@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useUserContext } from "./useUserContext";
-import { ActionOptions } from "../context/UserContext";
+import { UserOptions } from "../context/UserContext";
 
 export const useSignup = () => {
   const [error, setError] = useState(null);
@@ -25,7 +25,7 @@ export const useSignup = () => {
       setError(data.error);
     } else if (response.ok) {
       localStorage.setItem("user", JSON.stringify(data));
-      dispatch({ type: ActionOptions.LOGIN, payload: data });
+      dispatch({ type: UserOptions.LOGIN, payload: data });
       setIsLoading(false);
     }
   };

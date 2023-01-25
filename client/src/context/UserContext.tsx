@@ -9,13 +9,13 @@ type UserStateType = {
   user: User;
 };
 
-export const enum ActionOptions {
+export const enum UserOptions {
   LOGIN,
   LOGOUT
 }
 
 type ActionType = {
-  type: ActionOptions;
+  type: UserOptions;
   payload: any;
 };
 
@@ -30,9 +30,9 @@ export const UserContext = createContext<{
 
 export const userReducer = (state: UserStateType, action: ActionType) => {
   switch (action.type) {
-    case ActionOptions.LOGIN:
+    case UserOptions.LOGIN:
       return { user: action.payload };
-    case ActionOptions.LOGOUT:
+    case UserOptions.LOGOUT:
       return { user: null };
     default:
       return state;
@@ -44,10 +44,9 @@ export const UserContextProvider = ({ children }: UserContextProviderProps) => {
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user") || "null");
     if (user !== "null") {
-      dispatch({ type: ActionOptions.LOGIN, payload: user });
+      dispatch({ type: UserOptions.LOGIN, payload: user });
     }
   }, []);
-  console.log("UserContext state:", userState);
   return (
     <UserContext.Provider value={{ userState, dispatch }}>
       {children}

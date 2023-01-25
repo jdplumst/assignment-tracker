@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useUserContext } from "./useUserContext";
-import { ActionOptions } from "../context/UserContext";
+import { UserOptions } from "../context/UserContext";
 
 export const useLogin = () => {
   const [error, setError] = useState(null);
@@ -10,7 +10,6 @@ export const useLogin = () => {
   const login = async (email: String, password: String) => {
     setIsLoading(true);
     setError(null);
-    console.log(email, password);
 
     const response = await fetch("/api/user/login", {
       method: "POST",
@@ -25,7 +24,7 @@ export const useLogin = () => {
       setError(data.error);
     } else if (response.ok) {
       localStorage.setItem("user", JSON.stringify(data));
-      dispatch({ type: ActionOptions.LOGIN, payload: data });
+      dispatch({ type: UserOptions.LOGIN, payload: data });
       setIsLoading(false);
     }
   };

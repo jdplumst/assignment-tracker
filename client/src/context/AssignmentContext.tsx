@@ -14,14 +14,14 @@ type AssignmentsContextProviderProps = {
   children: React.ReactNode;
 };
 
-export const enum ActionOptions {
+export const enum AssignmentOptions {
   SET_ASSIGNMENTS,
   CREATE_ASSIGNMENT,
   DELETE_ASSIGNMENT
 }
 
 export type ActionType = {
-  type: ActionOptions;
+  type: AssignmentOptions;
   payload: any;
 };
 
@@ -39,17 +39,17 @@ export const assignmentsReducer = (
   action: ActionType
 ) => {
   switch (action.type) {
-    case ActionOptions.SET_ASSIGNMENTS:
+    case AssignmentOptions.SET_ASSIGNMENTS:
       return {
         assignments: action.payload
       };
-    case ActionOptions.CREATE_ASSIGNMENT:
+    case AssignmentOptions.CREATE_ASSIGNMENT:
       return {
         assignments: [action.payload, ...state.assignments].sort(
           (a, b) => +new Date(a.dueDate) - +new Date(b.dueDate)
         )
       };
-    case ActionOptions.DELETE_ASSIGNMENT:
+    case AssignmentOptions.DELETE_ASSIGNMENT:
       return {
         assignments: state.assignments.filter(
           (a) => a._id !== action.payload._id

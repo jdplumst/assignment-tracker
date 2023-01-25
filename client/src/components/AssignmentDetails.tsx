@@ -1,4 +1,4 @@
-import { Assignment, ActionOptions } from "../context/AssignmentContext";
+import { Assignment, AssignmentOptions } from "../context/AssignmentContext";
 import { useAssignmentsContext } from "../hooks/useAssignmentsContext";
 import { useUserContext } from "../hooks/useUserContext";
 
@@ -43,7 +43,7 @@ const AssignmentDetails = ({ assignment }: AssignmentDetailsProps) => {
     });
     const data = await response.json();
     if (response.ok) {
-      dispatch({ type: ActionOptions.DELETE_ASSIGNMENT, payload: data });
+      dispatch({ type: AssignmentOptions.DELETE_ASSIGNMENT, payload: data });
     }
   };
 

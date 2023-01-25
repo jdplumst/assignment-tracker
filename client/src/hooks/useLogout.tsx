@@ -1,12 +1,19 @@
 import { useUserContext } from "./useUserContext";
-import { ActionOptions } from "../context/UserContext";
+import { UserOptions } from "../context/UserContext";
+import { useAssignmentsContext } from "./useAssignmentsContext";
+import { AssignmentOptions } from "../context/AssignmentContext";
 
 export const useLogout = () => {
-  const { dispatch } = useUserContext();
+  const { dispatch: userDispatch } = useUserContext();
+  const { dispatch: assignmentsDispatch } = useAssignmentsContext();
 
   const logout = () => {
     localStorage.removeItem("user");
-    dispatch({ type: ActionOptions.LOGOUT, payload: null });
+    userDispatch({ type: UserOptions.LOGOUT, payload: null });
+    assignmentsDispatch({
+      type: AssignmentOptions.SET_ASSIGNMENTS,
+      payload: null
+    });
   };
 
   return { logout };

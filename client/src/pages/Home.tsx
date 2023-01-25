@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import AssignmentDetails from "../components/AssignmentDetails";
 import AssignmentForm from "../components/AssignmentForm";
-import { ActionOptions } from "../context/AssignmentContext";
+import { AssignmentOptions } from "../context/AssignmentContext";
 import { useAssignmentsContext } from "../hooks/useAssignmentsContext";
 import { useUserContext } from "../hooks/useUserContext";
 
@@ -22,7 +22,7 @@ const Home = () => {
       });
       const data = await response.json();
       if (response.ok) {
-        dispatch({ type: ActionOptions.SET_ASSIGNMENTS, payload: data });
+        dispatch({ type: AssignmentOptions.SET_ASSIGNMENTS, payload: data });
       }
     };
 
@@ -34,9 +34,10 @@ const Home = () => {
   return (
     <div className="grid grid-cols-3 gap-x-24 bg-slate-100 pt-10 min-h-screen">
       <div className="col-span-2">
-        {assignmentsState.assignments.map((assignment) => (
-          <AssignmentDetails key={uuidv4()} assignment={assignment} />
-        ))}
+        {assignmentsState.assignments &&
+          assignmentsState.assignments.map((assignment) => (
+            <AssignmentDetails key={uuidv4()} assignment={assignment} />
+          ))}
       </div>
       <AssignmentForm />
     </div>

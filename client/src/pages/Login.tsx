@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useLogin } from "../hooks/useLogin";
-import { ActionOptions } from "../context/UserContext";
 
 const Login = () => {
   const [email, setEmail] = useState("");
