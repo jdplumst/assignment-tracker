@@ -1,5 +1,4 @@
 const express = require("express");
-const router = express.Router();
 const {
   getAssignments,
   getAssignment,
@@ -7,6 +6,12 @@ const {
   deleteAssignment,
   updateAssignment
 } = require("../controllers/assignmentController");
+const requireAuth = require("../middleware/requireAuth");
+
+const router = express.Router();
+
+// Require authentication for all assignment routes
+router.use(requireAuth);
 
 // GET all assignments
 router.get("/", getAssignments);
