@@ -10,7 +10,6 @@ export const useSignup = () => {
   const signup = async (email: String, password: String) => {
     setIsLoading(true);
     setError(null);
-    console.log(email, password);
 
     const response = await fetch("/api/user/signup", {
       method: "POST",
