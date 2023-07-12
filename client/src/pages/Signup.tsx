@@ -37,7 +37,7 @@ const Signup = () => {
           Sign Up
         </button>
         {error && (
-          <div className="bg-pink-200 border-solid border-4 border-pink-300 mt-5 p-2 w-4/5">
+          <div className="flex justify-center bg-pink-200 border-solid border-4 border-pink-300 mt-5 p-2 w-full">
             {error}
           </div>
         )}
