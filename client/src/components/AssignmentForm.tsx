@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useAssignmentsContext } from "../hooks/useAssignmentsContext";
 import { AssignmentOptions } from "../context/AssignmentContext";
 import { useUserContext } from "../hooks/useUserContext";
+import { api } from "../constants";
 
 const AssignmentForm = () => {
   const { dispatch } = useAssignmentsContext();
@@ -19,12 +20,12 @@ const AssignmentForm = () => {
       return;
     }
     const assignment = { title, course, dueDate };
-    const response = await fetch("/api/assignments", {
+    const response = await fetch(`${api}/assignments`, {
       method: "POST",
       body: JSON.stringify(assignment),
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${userState.user.token}`
+        "Authorization": `Bearer ${userState.user.token}`
       }
     });
     const data = await response.json();

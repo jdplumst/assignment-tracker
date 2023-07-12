@@ -5,6 +5,7 @@ import AssignmentForm from "../components/AssignmentForm";
 import { AssignmentOptions } from "../context/AssignmentContext";
 import { useAssignmentsContext } from "../hooks/useAssignmentsContext";
 import { useUserContext } from "../hooks/useUserContext";
+import { api } from "../constants";
 
 const Home = () => {
   const { assignmentsState, dispatch } = useAssignmentsContext();
@@ -15,7 +16,7 @@ const Home = () => {
       if (!userState.user) {
         return;
       }
-      const response = await fetch("/api/assignments", {
+      const response = await fetch(`${api}/assignments`, {
         headers: { Authorization: `Bearer ${userState.user.token}` }
       });
       const data = await response.json();

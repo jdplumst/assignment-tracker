@@ -1,3 +1,4 @@
+import { api } from "../constants";
 import { Assignment, AssignmentOptions } from "../context/AssignmentContext";
 import { useAssignmentsContext } from "../hooks/useAssignmentsContext";
 import { useUserContext } from "../hooks/useUserContext";
@@ -35,7 +36,7 @@ const AssignmentDetails = ({ assignment }: AssignmentDetailsProps) => {
     if (!userState.user) {
       return;
     }
-    const response = await fetch(`/api/assignments/${assignment._id}`, {
+    const response = await fetch(`${api}/assignments/${assignment._id}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${userState.user.token}`
