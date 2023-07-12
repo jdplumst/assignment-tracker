@@ -1,6 +1,7 @@
 require("dotenv").config();
 
 const express = require("express");
+const cors = require("cors");
 
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
@@ -20,6 +21,9 @@ const userRoutes = require("./routes/user");
 
 const app = express();
 
+app.use(
+  cors({ origin: [process.env.DEV_CLIENT_URL, process.env.PROD_CLIENT_URL] })
+);
 app.use(express.json());
 
 app.use((req, res, next) => {
