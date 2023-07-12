@@ -11,7 +11,7 @@ mongoose
       console.log(`listening on port ${process.env.PORT}`);
     });
   })
-  .catch((err) => {
+  .catch((error) => {
     console.log(error);
   });
 
